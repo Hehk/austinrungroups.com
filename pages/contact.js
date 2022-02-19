@@ -9,7 +9,8 @@ export default function Contact() {
       <p>
         This whole website builds off a spreadsheet linked above. I am going to
         setup a kyle@austinrungroups.com email but if you need to get in contact
-        with me quickly, I am usually at ESBR and sometimes are Morning Jo's.
+        with me quickly, I am usually at ESBR and sometimes are Morning
+        Jo&apos;s.
       </p>
     </main>
   );
