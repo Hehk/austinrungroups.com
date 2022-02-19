@@ -1,14 +1,25 @@
+:root {
+  --gradient: linear-gradient(
+    45deg,
+    hsl(240deg 100% 20%) 0%,
+    hsl(247deg 99% 23%) 11%,
+    hsl(252deg 98% 27%) 22%,
+    hsl(255deg 97% 30%) 33%,
+    hsl(258deg 96% 34%) 44%,
+    hsl(260deg 96% 37%) 56%,
+    hsl(262deg 96% 41%) 67%,
+    hsl(264deg 97% 44%) 78%,
+    hsl(266deg 98% 47%) 89%,
+    hsl(268deg 100% 50%) 100%
+  );
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 * {
