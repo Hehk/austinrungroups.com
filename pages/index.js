@@ -1,24 +1,26 @@
-import Head from "next/head";
 import { getRunningMeetups } from "../lib/sheets";
 import styles from "../styles/Home.module.css";
 
 const getMeetupsForADay = (day, meetups) => {
+  const date = (time) => new Date(`01/01/2022 ${time}`);
   return meetups
     .filter((meetup) => meetup.day_of_the_week === day)
     .sort((a, b) => {
-      return new Date(a.time) > new Date(b.time);
+      return date(a.time) > date(b.time);
     });
 };
 function Meetups({ meetups }) {
   return (
-    <ol>
+    <ol className={styles.meetups}>
       {meetups.map((meetup) => {
         return (
-          <li>
-            <div>{meetup.running_group}</div>
-            <p>{meetup.time}</p>
-            <p>{meetup.description}</p>
-            <p>{meetup.location}</p>
+          <li key={meetup.groupName + meetup.time} className={styles.meetup}>
+            <div className={styles.timestamp}>{meetup.time}</div>
+            <div>
+              <div className={styles.groupName}>{meetup.running_group}</div>
+              <p>{meetup.description}</p>
+              <p>Location: {meetup.location}</p>
+            </div>
           </li>
         );
       })}
@@ -28,20 +30,21 @@ function Meetups({ meetups }) {
 
 export default function Home({ meetups }) {
   return (
-    <main className={styles.main}>
-      <h2>Monday</h2>
+    <main>
+      <h2>Weekly Meetups</h2>
+      <h3>Monday</h3>
       <Meetups meetups={getMeetupsForADay("Monday", meetups)} />
-      <h2>Tuesday</h2>
+      <h3>Tuesday</h3>
       <Meetups meetups={getMeetupsForADay("Tuesday", meetups)} />
-      <h2>Wednesday</h2>
+      <h3>Wednesday</h3>
       <Meetups meetups={getMeetupsForADay("Wednesday", meetups)} />
-      <h2>Thursday</h2>
+      <h3>Thursday</h3>
       <Meetups meetups={getMeetupsForADay("Thursday", meetups)} />
-      <h2>Friday</h2>
+      <h3>Friday</h3>
       <Meetups meetups={getMeetupsForADay("Friday", meetups)} />
-      <h2>Saturday</h2>
+      <h3>Saturday</h3>
       <Meetups meetups={getMeetupsForADay("Saturday", meetups)} />
-      <h2>Sunday</h2>
+      <h3>Sunday</h3>
       <Meetups meetups={getMeetupsForADay("Sunday", meetups)} />
     </main>
   );
@@ -53,6 +56,7 @@ export async function getStaticProps() {
     props: {
       meetups,
     },
-    revalidate: 1,
+    // minute in dev, hour in prod
+    revalidate: process.env.NODE_ENV === "development" ? 60 : 60 * 60,
   };
 }

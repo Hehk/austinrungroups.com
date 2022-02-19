@@ -1,0 +1,18 @@
+.timestamp {
+  min-width: 100px;
+}
+
+.groupName {
+  font-weight: bold;
+}
+
+.meetup {
+  display: flex;
+  flex-direction: row;
+}
+
+.meetups {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
