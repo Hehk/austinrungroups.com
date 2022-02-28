@@ -1,23 +1,28 @@
 import { getRunningMeetups } from "../lib/sheets";
+import { meetupId, snakeCase } from "../lib/utils";
 import styles from "../styles/Home.module.css";
+import Link from "next/link";
 
 const getMeetupsForADay = (day, meetups) => {
   const date = (time) => new Date(`01/01/2022 ${time}`);
   return meetups
     .filter((meetup) => meetup.day_of_the_week === day)
     .sort((a, b) => {
-      return date(a.time) > date(b.time);
+      return date(a.time) - date(b.time);
     });
 };
 function Meetups({ meetups }) {
   return (
     <ol className={styles.meetups}>
       {meetups.map((meetup) => {
+        const key = meetupId(meetup);
         return (
-          <li key={meetup.groupName + meetup.time} className={styles.meetup}>
+          <li key={key} className={styles.meetup} id={key}>
             <div className={styles.timestamp}>{meetup.time}</div>
             <div>
-              <div className={styles.groupName}>{meetup.running_group}</div>
+              <Link href={`/groups/#${snakeCase(meetup.running_group)}`}>
+                <a className={styles.groupName}>{meetup.running_group}</a>
+              </Link>
               <p>{meetup.description}</p>
               <p>Location: {meetup.location}</p>
             </div>

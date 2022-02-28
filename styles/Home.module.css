@@ -4,6 +4,8 @@
 
 .groupName {
   font-weight: bold;
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 .meetup {
