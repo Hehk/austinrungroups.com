@@ -34,10 +34,7 @@ export default function Events({ events }) {
   return (
     <main>
       <h2>Races & Events</h2>
-      <h3>
-        This page is heavily WIP, don&apos;t expect anything here to be very
-        trustworth!
-      </h3>
+      <h3>This page is heavily WIP, things may be inaccurate.</h3>
       <ol className={styles.events}>
         {events.map((event) => (
           <Event key={event.name + event.date.toString()} event={event} />
