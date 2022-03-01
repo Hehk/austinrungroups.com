@@ -35,7 +35,7 @@ export default function Events({ events }) {
     <main>
       <h2>Races & Events</h2>
       <h3>
-        This page is heavily WIP, don't expect anything here to be very
+        This page is heavily WIP, don&apos;t expect anything here to be very
         trustworth!
       </h3>
       <ol className={styles.events}>
