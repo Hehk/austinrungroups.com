@@ -1,4 +1,5 @@
 import { getEvents } from "../lib/sheets";
+import { snakeCase } from "../lib/utils";
 import styles from "../styles/Events.module.css";
 import Link from "next/link";
 
@@ -10,7 +11,15 @@ function Event({ event }) {
         <div className={styles.date}>{event.date.toDateString()}</div>
       </div>
       <p className={styles.description}>{event.description}</p>
-      <p className={styles.distances}>{event.distances}</p>
+      {event.distances ? (
+        <p className={styles.distances}>{event.distances}</p>
+      ) : null}
+      {event.host ? (
+        <p className={styles.host}>
+          Host:{" "}
+          <Link href={`/groups/#${snakeCase(event.host)}`}>{event.host}</Link>
+        </p>
+      ) : null}
       <div className={styles.footer}>
         {event.website ? <Link href={event.website}>Website</Link> : null}
         {event.instagram ? <Link href={event.instagram}>Instagram</Link> : null}
