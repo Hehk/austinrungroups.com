@@ -1,7 +1,8 @@
-import { getRunningMeetups } from "../lib/sheets";
+import { getRunningMeetups, getEvents } from "../lib/sheets";
 import { meetupId, snakeCase } from "../lib/utils";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
+import { Events } from "./events";
 
 const getMeetupsForADay = (day, meetups) => {
   const date = (time) => new Date(`01/01/2022 ${time}`);
@@ -11,7 +12,7 @@ const getMeetupsForADay = (day, meetups) => {
       return date(a.time) - date(b.time);
     });
 };
-function Meetups({ meetups }) {
+function Meetups({ meetups, events }) {
   return (
     <ol className={styles.meetups}>
       {meetups.map((meetup) => {
@@ -33,9 +34,28 @@ function Meetups({ meetups }) {
   );
 }
 
-export default function Home({ meetups }) {
+export default function Home({ meetups, events }) {
+  // next 14 days
+  const later = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000);
+  events = events.filter((event) => {
+    const date = new Date(event.date);
+    if (date < new Date()) {
+      return false;
+    } else if (date > later) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+
   return (
     <main>
+      {events.length > 0 ? (
+        <>
+          <h2>Upcoming Events</h2>
+          <Events events={events} />
+        </>
+      ) : null}
       <h2>Weekly Meetups</h2>
       <h3>Monday</h3>
       <Meetups meetups={getMeetupsForADay("Monday", meetups)} />
@@ -56,10 +76,12 @@ export default function Home({ meetups }) {
 }
 
 export async function getStaticProps() {
+  const events = await getEvents();
   const meetups = await getRunningMeetups();
   return {
     props: {
       meetups,
+      events,
     },
     // minute in dev, hour in prod
     revalidate: process.env.NODE_ENV === "development" ? 60 : 60 * 60,

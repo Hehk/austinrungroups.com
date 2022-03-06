@@ -1,8 +1,5 @@
 import Link from "next/link";
 import styles from "../styles/Header.module.css";
-const spreadsheetLink =
-  "https://docs.google.com/spreadsheets/d/1cy2U3JYRbCHj-KI-eszUZH2b5ZKNB5IJ2awiAny2Y8g/edit?usp=sharing";
-const githubRepo = "https://github.com/Hehk/austinrungroups.com";
 
 export default function Header() {
   return (
@@ -20,12 +17,6 @@ export default function Header() {
         </Link>
         <Link className={styles.navLink} href="/about">
           <a className={styles.navLink}>About</a>
-        </Link>
-        <Link className={styles.navLink} href={spreadsheetLink}>
-          <a className={styles.navLink}>Spreadsheet</a>
-        </Link>
-        <Link className={styles.navLink} href={githubRepo}>
-          <a className={styles.navLink}>Repo</a>
         </Link>
       </nav>
     </header>

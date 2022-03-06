@@ -8,7 +8,14 @@ function Event({ event }) {
     <li className={styles.event}>
       <div className={styles.title}>
         <h3 className={styles.name}>{event.name}</h3>
-        <div className={styles.date}>{event.date.toDateString()}</div>
+        <div className={styles.date}>
+          {event.date.toLocaleDateString("en-US", {
+            weekday: "long",
+            month: "long",
+            day: "numeric",
+          })}
+          {event.time ? ` at ${event.time}` : null}
+        </div>
       </div>
       <p className={styles.description}>{event.description}</p>
       {event.distances ? (
@@ -30,7 +37,7 @@ function Event({ event }) {
   );
 }
 
-export default function Events({ events }) {
+export function Events({ events }) {
   events = events
     .map((event) => {
       return {
@@ -38,17 +45,27 @@ export default function Events({ events }) {
         date: new Date(event.date),
       };
     })
+    .filter((event) => event.date > new Date())
     .sort((a, b) => a.date.getTime() - b.date.getTime());
 
   return (
+    <ol className={styles.events}>
+      {events.map((event) => (
+        <Event key={event.name + event.date.toString()} event={event} />
+      ))}
+    </ol>
+  );
+}
+
+export default function EventsPage({ events }) {
+  return (
     <main>
       <h2>Races & Events</h2>
-      <h3>This page is heavily WIP, things may be inaccurate.</h3>
-      <ol className={styles.events}>
-        {events.map((event) => (
-          <Event key={event.name + event.date.toString()} event={event} />
-        ))}
-      </ol>
+      <h3>
+        I have not done a thorough check of upcoming events, this is in no way a
+        complete list!
+      </h3>
+      <Events events={events} />
     </main>
   );
 }
