@@ -12,7 +12,7 @@ const getMeetupsForADay = (day, meetups) => {
       return date(a.time) - date(b.time);
     });
 };
-function Meetups({ meetups, events }) {
+function Meetups({ meetups }) {
   return (
     <ol className={styles.meetups}>
       {meetups.map((meetup) => {

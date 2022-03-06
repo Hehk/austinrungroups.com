@@ -89,3 +89,10 @@ a:hover:after {
   height: 3px;
   bottom: -1px;
 }
+
+h1,
+h2 {
+  margin-top: 2rem;
+  line-height: 1em;
+  margin-bottom: 1rem;
+}

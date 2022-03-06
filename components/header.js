@@ -4,7 +4,7 @@ import styles from "../styles/Header.module.css";
 export default function Header() {
   return (
     <header className={styles.header}>
-      <h1 className={styles.title}>Austin Run Groups</h1>
+      <h1 className={styles.title}>Austin Running</h1>
       <nav>
         <Link href="/">
           <a className={styles.navLink}>Home</a>
