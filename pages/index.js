@@ -1,8 +1,10 @@
 import { getRunningMeetups, getEvents } from "../lib/sheets";
 import { meetupId, snakeCase } from "../lib/utils";
-import styles from "../styles/Home.module.css";
-import Link from "next/link";
 import { Events } from "./events";
+import A from '../components/a'
+import H2 from '../components/h2'
+import H3 from '../components/h3'
+import Content from '../components/content'
 
 const getMeetupsForADay = (day, meetups) => {
   const date = (time) => new Date(`01/01/2022 ${time}`);
@@ -14,16 +16,16 @@ const getMeetupsForADay = (day, meetups) => {
 };
 function Meetups({ meetups }) {
   return (
-    <ol className={styles.meetups}>
+    <ol className="mb-4">
       {meetups.map((meetup) => {
         const key = meetupId(meetup);
         return (
-          <li key={key} className={styles.meetup} id={key}>
-            <div className={styles.timestamp}>{meetup.time}</div>
+          <li key={key} className="flex mb-4" id={key}>
+            <div className="w-24 flex-none">{meetup.time}</div>
             <div>
-              <Link href={`/groups/#${snakeCase(meetup.running_group)}`}>
-                <a className={styles.groupName}>{meetup.running_group}</a>
-              </Link>
+              <A href={`/groups/#${snakeCase(meetup.running_group)}`}>
+                {meetup.running_group}
+              </A>
               <p>{meetup.description}</p>
               <p>Location: {meetup.location}</p>
             </div>
@@ -49,29 +51,29 @@ export default function Home({ meetups, events }) {
   });
 
   return (
-    <main>
+    <Content>
       {events.length > 0 ? (
         <>
-          <h2>Upcoming Events</h2>
+          <H2>Upcoming Events</H2>
           <Events events={events} />
         </>
       ) : null}
-      <h2>Weekly Meetups</h2>
-      <h3>Monday</h3>
+      <H2>Weekly Meetups</H2>
+      <H3>Monday</H3>
       <Meetups meetups={getMeetupsForADay("Monday", meetups)} />
-      <h3>Tuesday</h3>
+      <H3>Tuesday</H3>
       <Meetups meetups={getMeetupsForADay("Tuesday", meetups)} />
-      <h3>Wednesday</h3>
+      <H3>Wednesday</H3>
       <Meetups meetups={getMeetupsForADay("Wednesday", meetups)} />
-      <h3>Thursday</h3>
+      <H3>Thursday</H3>
       <Meetups meetups={getMeetupsForADay("Thursday", meetups)} />
-      <h3>Friday</h3>
+      <H3>Friday</H3>
       <Meetups meetups={getMeetupsForADay("Friday", meetups)} />
-      <h3>Saturday</h3>
+      <H3>Saturday</H3>
       <Meetups meetups={getMeetupsForADay("Saturday", meetups)} />
-      <h3>Sunday</h3>
+      <H3>Sunday</H3>
       <Meetups meetups={getMeetupsForADay("Sunday", meetups)} />
-    </main>
+    </Content>
   );
 }
 

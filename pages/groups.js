@@ -1,7 +1,10 @@
 import { getRunningGroups, getRunningMeetups } from "../lib/sheets";
 import { snakeCase, meetupId } from "../lib/utils";
-import styles from "../styles/Groups.module.css";
 import NextLink from "next/link";
+import A from '../components/a'
+import H3 from '../components/h3'
+import H2 from '../components/h2'
+import Content from '../components/content'
 
 // This could probably be made one line
 const dayToNum = (day) => {
@@ -32,19 +35,21 @@ function MeetupLinks({ meetups }) {
     days[day] = meetup;
   });
   const MeetupLink = ({ meetup, children }) => {
-    if (!meetup) return <li className={styles.groupMeetup}>{children}</li>;
+    if (!meetup) return <li className="rounded h-6 w-6 text-center bg-gray-400 mr-2">{children}</li>;
 
     return (
-      <li className={styles.groupMeetup}>
+      <li>
         <NextLink href={`/#${meetupId(meetup)}`}>
-          <a className={styles.groupMeetupLink}>{children}</a>
+          <a className="rounded block text-white bg-blue-400 h-6 w-6 text-center mr-2" >
+            {children}
+          </a>
         </NextLink>
       </li>
     );
   };
 
   return (
-    <ol className={styles.groupMeetups}>
+    <ol className="mb-2 flex">
       <MeetupLink meetup={days[0]}>M</MeetupLink>
       <MeetupLink meetup={days[1]}>T</MeetupLink>
       <MeetupLink meetup={days[2]}>W</MeetupLink>
@@ -59,16 +64,16 @@ function MeetupLinks({ meetups }) {
 function Group({ group, meetups }) {
   const Link = ({ link, text }) =>
     link ? (
-      <NextLink href={link}>
-        <a className={styles.link}>{text}</a>
-      </NextLink>
+      <A className="mr-4" href={link}>
+        {text}
+      </A>
     ) : null;
   return (
-    <li key={snakeCase(group.name)} className={styles.group}>
-      <h3 id={snakeCase(group.name)}>{group.name}</h3>
+    <li className="mb-2" key={snakeCase(group.name)}>
+      <H3 id={snakeCase(group.name)}>{group.name}</H3>
       <MeetupLinks meetups={meetups} />
       <p>{group.description}</p>
-      <div className={styles.links}>
+      <div className="mb-2">
         <Link link={group.instagram} text="Instagram" />
         <Link link={group.twitter} text="Twitter" />
         <Link link={group.strava} text="Strava" />
@@ -87,9 +92,9 @@ export default function Groups({ groups, meetups }) {
     meetupsByGroup[id].push(meetup);
   });
   return (
-    <main>
-      <h2>Groups</h2>
-      <ul className={styles.groupList}>
+    <Content>
+      <H2>Groups</H2>
+      <ul>
         {groups
           .sort((a, b) => a.name > b.name)
           .map((group) => (
@@ -100,7 +105,7 @@ export default function Groups({ groups, meetups }) {
             />
           ))}
       </ul>
-    </main>
+    </Content>
   );
 }
 

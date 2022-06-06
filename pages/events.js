@@ -1,14 +1,18 @@
 import { getEvents } from "../lib/sheets";
 import { snakeCase } from "../lib/utils";
-import styles from "../styles/Events.module.css";
-import Link from "next/link";
+import A from "../components/a";
+import Content from '../components/content'
+import H3 from '../components/h3'
+import H2 from '../components/h2'
+import P from '../components/p'
+
 
 function Event({ event }) {
   return (
-    <li className={styles.event}>
-      <div className={styles.title}>
-        <h3 className={styles.name}>{event.name}</h3>
-        <div className={styles.date}>
+    <li className="mb-4">
+      <div className="flex justify-between">
+        <H3>{event.name}</H3>
+        <div>
           {event.date.toLocaleDateString("en-US", {
             weekday: "long",
             month: "long",
@@ -17,21 +21,21 @@ function Event({ event }) {
           {event.time ? ` at ${event.time}` : null}
         </div>
       </div>
-      <p className={styles.description}>{event.description}</p>
+      <P>{event.description}</P>
       {event.distances ? (
-        <p className={styles.distances}>{event.distances}</p>
+        <P>{event.distances}</P>
       ) : null}
       {event.host ? (
-        <p className={styles.host}>
+        <P>
           Host:{" "}
-          <Link href={`/groups/#${snakeCase(event.host)}`}>{event.host}</Link>
-        </p>
+          <A href={`/groups/#${snakeCase(event.host)}`}>{event.host}</A>
+        </P>
       ) : null}
-      <div className={styles.footer}>
-        {event.website ? <Link href={event.website}>Website</Link> : null}
-        {event.instagram ? <Link href={event.instagram}>Instagram</Link> : null}
-        {event.facebook ? <Link href={event.facebook}>Facebook</Link> : null}
-        {event.twitter ? <Link href={event.twitter}>Twitter</Link> : null}
+      <div className="flex">
+        {event.website ? <A href={event.website}>Website</A> : null}
+        {event.instagram ? <A href={event.instagram}>Instagram</A> : null}
+        {event.facebook ? <A href={event.facebook}>Facebook</A> : null}
+        {event.twitter ? <A href={event.twitter}>Twitter</A> : null}
       </div>
     </li>
   );
@@ -49,7 +53,7 @@ export function Events({ events }) {
     .sort((a, b) => a.date.getTime() - b.date.getTime());
 
   return (
-    <ol className={styles.events}>
+    <ol>
       {events.map((event) => (
         <Event key={event.name + event.date.toString()} event={event} />
       ))}
@@ -59,14 +63,14 @@ export function Events({ events }) {
 
 export default function EventsPage({ events }) {
   return (
-    <main>
-      <h2>Races & Events</h2>
-      <h3>
+    <Content>
+      <H2>Races & Events</H2>
+      <H3>
         I have not done a thorough check of upcoming events, this is in no way a
         complete list!
-      </h3>
+      </H3>
       <Events events={events} />
-    </main>
+    </Content>
   );
 }
 

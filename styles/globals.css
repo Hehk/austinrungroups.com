@@ -1,98 +1,11 @@
-:root {
-  --text-color: #181717;
-  --background-color: #f3f3f3;
-  --gradient: linear-gradient(
-    60deg,
-    hsl(240deg 64% 52%) 0%,
-    hsl(258deg 64% 50%) 11%,
-    hsl(271deg 66% 49%) 22%,
-    hsl(282deg 70% 47%) 33%,
-    hsl(291deg 76% 44%) 44%,
-    hsl(300deg 85% 41%) 56%,
-    hsl(306deg 98% 42%) 67%,
-    hsl(312deg 100% 44%) 78%,
-    hsl(316deg 100% 47%) 89%,
-    hsl(320deg 100% 50%) 100%
-  );
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #27292d;
-    --text-color: hsla(0, 0%, 100%, 0.9);
-    --gradient: linear-gradient(
-      45deg,
-      hsl(181deg 100% 50%) 0%,
-      hsl(176deg 100% 50%) 11%,
-      hsl(171deg 100% 50%) 22%,
-      hsl(161deg 100% 62%) 33%,
-      hsl(147deg 100% 69%) 44%,
-      hsl(124deg 100% 76%) 56%,
-      hsl(98deg 96% 71%) 67%,
-      hsl(80deg 92% 65%) 78%,
-      hsl(66deg 88% 57%) 89%,
-      hsl(55deg 100% 50%) 100%
-    );
-  }
 
-  a {
-    background-image: var(--gradient);
-    background-clip: text;
-    color: transparent;
-    position: relative;
-  }
-  a:after {
-    content: "";
-    height: 1px;
-    background-image: var(--gradient);
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-  }
-}
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-main {
-  max-width: 800px;
-  padding: 0 1rem;
-  margin: 0 auto;
-}
-a {
-  position: relative;
-  text-decoration: none;
-  color: var(--text-color);
-}
-a:after {
-  content: "";
-  height: 1px;
-  background-image: var(--gradient);
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-}
-a:hover:after {
-  height: 3px;
-  bottom: -1px;
-}
-
-h1,
-h2 {
-  margin-top: 2rem;
-  line-height: 1em;
-  margin-bottom: 1rem;
-}
+/* @media (prefers-color-scheme: dark) { */
+/*   :root { */
+/*     --background-color: #27292d; */
+/*     --text-color: hsla(0, 0%, 100%, 0.9); */
+/*   } */
+/* } */

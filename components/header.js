@@ -1,23 +1,22 @@
-import Link from "next/link";
-import styles from "../styles/Header.module.css";
+import H1 from './h1'
+import A from './a'
 
 export default function Header() {
   return (
-    <header className={styles.header}>
-      <h1 className={styles.title}>Austin Running</h1>
+    <header className="container max-w-3xl mx-auto px-4 pt-8">
+      <H1>Austin Running</H1>
       <nav>
-        <Link href="/">
-          <a className={styles.navLink}>Home</a>
-        </Link>
-        <Link href="/groups">
-          <a className={styles.navLink}>Groups</a>
-        </Link>
-        <Link className={styles.navLink} href="/events">
-          <a className={styles.navLink}>Events & Races</a>
-        </Link>
-        <Link className={styles.navLink} href="/about">
-          <a className={styles.navLink}>About</a>
-        </Link>
+        <A className="mr-4" href="/">Home
+        </A>
+        <A className="mr-4" href="/groups">
+          Groups
+        </A>
+        <A className="mr-4" href="/events">
+          Events & Races
+        </A>
+        <A href="/about">
+          About
+        </A>
       </nav>
     </header>
   );
