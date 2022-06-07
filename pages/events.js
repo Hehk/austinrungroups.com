@@ -1,11 +1,10 @@
 import { getEvents } from "../lib/sheets";
 import { snakeCase } from "../lib/utils";
 import A from "../components/a";
-import Content from '../components/content'
-import H3 from '../components/h3'
-import H2 from '../components/h2'
-import P from '../components/p'
-
+import Content from "../components/content";
+import H3 from "../components/h3";
+import H2 from "../components/h2";
+import P from "../components/p";
 
 function Event({ event }) {
   return (
@@ -22,13 +21,10 @@ function Event({ event }) {
         </div>
       </div>
       <P>{event.description}</P>
-      {event.distances ? (
-        <P>{event.distances}</P>
-      ) : null}
+      {event.distances ? <P>{event.distances}</P> : null}
       {event.host ? (
         <P>
-          Host:{" "}
-          <A href={`/groups/#${snakeCase(event.host)}`}>{event.host}</A>
+          Host: <A href={`/groups/#${snakeCase(event.host)}`}>{event.host}</A>
         </P>
       ) : null}
       <div className="flex">

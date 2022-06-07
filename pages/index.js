@@ -1,10 +1,10 @@
 import { getRunningMeetups, getEvents } from "../lib/sheets";
 import { meetupId, snakeCase } from "../lib/utils";
 import { Events } from "./events";
-import A from '../components/a'
-import H2 from '../components/h2'
-import H3 from '../components/h3'
-import Content from '../components/content'
+import A from "../components/a";
+import H2 from "../components/h2";
+import H3 from "../components/h3";
+import Content from "../components/content";
 
 const getMeetupsForADay = (day, meetups) => {
   const date = (time) => new Date(`01/01/2022 ${time}`);

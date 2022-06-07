@@ -14,8 +14,8 @@ function MyApp({ Component, pageProps, ...rest }) {
         <link rel="icon" href="/running.svg" />
       </Head>
       <body className="bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100">
-      <Header />
-      <Component {...pageProps} />
+        <Header />
+        <Component {...pageProps} />
       </body>
     </>
   );

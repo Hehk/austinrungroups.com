@@ -1,10 +1,10 @@
 import { getRunningGroups, getRunningMeetups } from "../lib/sheets";
 import { snakeCase, meetupId } from "../lib/utils";
 import NextLink from "next/link";
-import A from '../components/a'
-import H3 from '../components/h3'
-import H2 from '../components/h2'
-import Content from '../components/content'
+import A from "../components/a";
+import H3 from "../components/h3";
+import H2 from "../components/h2";
+import Content from "../components/content";
 
 // This could probably be made one line
 const dayToNum = (day) => {
@@ -35,12 +35,17 @@ function MeetupLinks({ meetups }) {
     days[day] = meetup;
   });
   const MeetupLink = ({ meetup, children }) => {
-    if (!meetup) return <li className="rounded h-6 w-6 text-center bg-gray-400 mr-2">{children}</li>;
+    if (!meetup)
+      return (
+        <li className="rounded h-6 w-6 text-center bg-gray-400 mr-2">
+          {children}
+        </li>
+      );
 
     return (
       <li>
         <NextLink href={`/#${meetupId(meetup)}`}>
-          <a className="rounded block text-white bg-blue-400 h-6 w-6 text-center mr-2" >
+          <a className="rounded block text-white bg-blue-400 h-6 w-6 text-center mr-2">
             {children}
           </a>
         </NextLink>
