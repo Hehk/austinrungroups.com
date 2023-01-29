@@ -13,6 +13,7 @@ export default function Contact() {
         <A href="https://www.strava.com/athletes/25975441">Kyle Henderson</A>. I
         am the guy with a border collie named Reg (He usually goes by Greg).
       </P>
+      <br />
       <H2>How to Help?</H2>
       <P>
         The main source of truth for this website is a{" "}

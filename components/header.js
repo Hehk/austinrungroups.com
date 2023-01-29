@@ -3,7 +3,7 @@ import A from "./a";
 
 export default function Header() {
   return (
-    <header className="container max-w-3xl mx-auto px-4 pt-8">
+    <header className="container max-w-3xl mx-auto px-4 pt-16 sm:flex justify-between">
       <H1>Austin Running</H1>
       <nav>
         <A className="mr-4" href="/">

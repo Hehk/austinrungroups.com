@@ -44,17 +44,18 @@ function MeetupLinks({ meetups }) {
 
     return (
       <li>
-        <NextLink href={`/#${meetupId(meetup)}`}>
-          <a className="rounded block text-white bg-blue-400 h-6 w-6 text-center mr-2">
-            {children}
-          </a>
+        <NextLink
+          href={`/#${meetupId(meetup)}`}
+          className="rounded block bg-green-400 h-6 w-6 text-center mr-2"
+        >
+          {children}
         </NextLink>
       </li>
     );
   };
 
   return (
-    <ol className="mb-2 flex">
+    <ol className="mb-4 flex">
       <MeetupLink meetup={days[0]}>M</MeetupLink>
       <MeetupLink meetup={days[1]}>T</MeetupLink>
       <MeetupLink meetup={days[2]}>W</MeetupLink>
@@ -74,10 +75,12 @@ function Group({ group, meetups }) {
       </A>
     ) : null;
   return (
-    <li className="mb-2" key={snakeCase(group.name)}>
+    <li className="mb-16" key={snakeCase(group.name)}>
       <H3 id={snakeCase(group.name)}>{group.name}</H3>
       <MeetupLinks meetups={meetups} />
-      <p>{group.description}</p>
+      {group.description ? (
+        <p className="leading-6 mb-2">{group.description}</p>
+      ) : null}
       <div className="mb-2">
         <Link link={group.instagram} text="Instagram" />
         <Link link={group.twitter} text="Twitter" />

@@ -1,8 +1,11 @@
 import "../styles/globals.css";
 import Head from "next/head";
 import Header from "../components/header";
+import { Inter } from "@next/font/google";
 
-function MyApp({ Component, pageProps, ...rest }) {
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
+function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
@@ -13,10 +16,10 @@ function MyApp({ Component, pageProps, ...rest }) {
         />
         <link rel="icon" href="/running.svg" />
       </Head>
-      <body className="bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100">
+      <div className={`font-sans ${inter.variable}`}>
         <Header />
         <Component {...pageProps} />
-      </body>
+      </div>
     </>
   );
 }

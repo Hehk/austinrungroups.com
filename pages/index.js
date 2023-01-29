@@ -16,18 +16,23 @@ const getMeetupsForADay = (day, meetups) => {
 };
 function Meetups({ meetups }) {
   return (
-    <ol className="mb-4">
+    <ol className="mb-16">
       {meetups.map((meetup) => {
         const key = meetupId(meetup);
         return (
-          <li key={key} className="flex mb-4" id={key}>
-            <div className="w-24 flex-none">{meetup.time}</div>
-            <div>
-              <A href={`/groups/#${snakeCase(meetup.running_group)}`}>
+          <li key={key} className="grid grid-cols-6 gap-4 mb-4" id={key}>
+            <div className="w-24 flex-none col-span-1 leading-8">
+              {meetup.time}
+            </div>
+            <div className="col-span-5">
+              <A
+                className="mb-2 block"
+                href={`/groups/#${snakeCase(meetup.running_group)}`}
+              >
                 {meetup.running_group}
               </A>
-              <p>{meetup.description}</p>
-              <p>Location: {meetup.location}</p>
+              <p className="leading-6 mb-2">{meetup.description}</p>
+              <p className="leading-6 mb-2">Location: {meetup.location}</p>
             </div>
           </li>
         );
@@ -58,20 +63,19 @@ export default function Home({ meetups, events }) {
           <Events events={events} />
         </>
       ) : null}
-      <H2>Weekly Meetups</H2>
-      <H3>Monday</H3>
+      <H2>Monday</H2>
       <Meetups meetups={getMeetupsForADay("Monday", meetups)} />
-      <H3>Tuesday</H3>
+      <H2>Tuesday</H2>
       <Meetups meetups={getMeetupsForADay("Tuesday", meetups)} />
-      <H3>Wednesday</H3>
+      <H2>Wednesday</H2>
       <Meetups meetups={getMeetupsForADay("Wednesday", meetups)} />
-      <H3>Thursday</H3>
+      <H2>Thursday</H2>
       <Meetups meetups={getMeetupsForADay("Thursday", meetups)} />
-      <H3>Friday</H3>
+      <H2>Friday</H2>
       <Meetups meetups={getMeetupsForADay("Friday", meetups)} />
-      <H3>Saturday</H3>
+      <H2>Saturday</H2>
       <Meetups meetups={getMeetupsForADay("Saturday", meetups)} />
-      <H3>Sunday</H3>
+      <H2>Sunday</H2>
       <Meetups meetups={getMeetupsForADay("Sunday", meetups)} />
     </Content>
   );
