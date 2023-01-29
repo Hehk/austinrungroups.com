@@ -1,10 +1,9 @@
 import { getRunningMeetups, getEvents } from "../lib/sheets";
 import { meetupId, snakeCase } from "../lib/utils";
 import { Events } from "./events";
-import A from "../components/a";
-import H2 from "../components/h2";
-import H3 from "../components/h3";
-import Content from "../components/content";
+import Link from "../components/Link";
+import H2 from "../components/H2";
+import Content from "../components/Content";
 
 const getMeetupsForADay = (day, meetups) => {
   const date = (time) => new Date(`01/01/2022 ${time}`);
@@ -29,12 +28,12 @@ function Meetups({ meetups }) {
               {meetup.time}
             </div>
             <div className="col-span-2 sm:col-span-5">
-              <A
+              <Link
                 className="mb-2 block"
                 href={`/groups/#${snakeCase(meetup.running_group)}`}
               >
                 {meetup.running_group}
-              </A>
+              </Link>
               <p className="leading-6 mb-2">{meetup.description}</p>
               <p className="leading-6 mb-2">Location: {meetup.location}</p>
             </div>

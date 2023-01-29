@@ -1,21 +1,30 @@
 import H1 from "./h1";
-import A from "./a";
+import A from "./Link";
+import NextLink from "next/link";
 
-export default function Header() {
+function Link({ href, text, route }) {
+  if (href === route)
+    return <span className="mr-4 underline underline-offset-4">{text}</span>;
+
+  return (
+    <A className="mr-4" href={href}>
+      {text}
+    </A>
+  );
+}
+
+export default function Header({ route, ...rest }) {
   return (
     <header className="container max-w-3xl mx-auto px-4 pt-16 sm:flex justify-between">
-      <H1>Austin Running</H1>
+      <H1>
+        <NextLink href="/">Austin Running</NextLink>
+      </H1>
       <nav>
-        <A className="mr-4" href="/">
-          Home
-        </A>
-        <A className="mr-4" href="/groups">
-          Groups
-        </A>
-        <A className="mr-4" href="/events">
-          Events & Races
-        </A>
-        <A href="/about">About</A>
+        <Link href="/" text="Home" route={route} />
+        <Link href="/groups" text="Groups" route={route} />
+        <Link href="/events" text="Events & Races" route={route} />
+        <Link href="/routes" text="Routes" route={route} />
+        <Link href="/about" text="About" route={route} />
       </nav>
     </header>
   );

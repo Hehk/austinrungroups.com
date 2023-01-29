@@ -1,10 +1,10 @@
 import { getRunningGroups, getRunningMeetups } from "../lib/sheets";
 import { snakeCase, meetupId } from "../lib/utils";
 import NextLink from "next/link";
-import A from "../components/a";
-import H3 from "../components/h3";
-import H2 from "../components/h2";
-import Content from "../components/content";
+import Link from "../components/Link";
+import H3 from "../components/H3";
+import H2 from "../components/H2";
+import Content from "../components/Content";
 
 // This could probably be made one line
 const dayToNum = (day) => {
@@ -68,25 +68,25 @@ function MeetupLinks({ meetups }) {
 }
 
 function Group({ group, meetups }) {
-  const Link = ({ link, text }) =>
+  const L = ({ link, text }) =>
     link ? (
-      <A className="mr-4" href={link}>
+      <Link className="mr-4" href={link}>
         {text}
-      </A>
+      </Link>
     ) : null;
   return (
-    <li className="mb-16" key={snakeCase(group.name)}>
+    <li className="mb-8" key={snakeCase(group.name)}>
       <H3 id={snakeCase(group.name)}>{group.name}</H3>
       <MeetupLinks meetups={meetups} />
       {group.description ? (
         <p className="leading-6 mb-2">{group.description}</p>
       ) : null}
       <div className="mb-2">
-        <Link link={group.instagram} text="Instagram" />
-        <Link link={group.twitter} text="Twitter" />
-        <Link link={group.strava} text="Strava" />
-        <Link link={group.website} text="Website" />
-        <Link link={group.facebook} text="Facebook" />
+        <L link={group.instagram} text="Instagram" />
+        <L link={group.twitter} text="Twitter" />
+        <L link={group.strava} text="Strava" />
+        <L link={group.website} text="Website" />
+        <L link={group.facebook} text="Facebook" />
       </div>
     </li>
   );

@@ -1,13 +1,13 @@
-import Link from "next/link";
+import NextLink from "next/link";
 
-export default function A({ className, children, ...rest }) {
+export default function Link({ className, children, ...rest }) {
   const cls = className ? " " + className : "";
   return (
-    <Link
+    <NextLink
       {...rest}
       className={`underline decoration-green-400 hover:text-green-400 underline-offset-4 ${cls} leading-8`}
     >
       {children}
-    </Link>
+    </NextLink>
   );
 }

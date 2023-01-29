@@ -1,14 +1,14 @@
 import { getEvents } from "../lib/sheets";
 import { snakeCase } from "../lib/utils";
-import A from "../components/a";
-import Content from "../components/content";
-import H3 from "../components/h3";
-import H2 from "../components/h2";
-import P from "../components/p";
+import Link from "../components/Link";
+import Content from "../components/Content";
+import H3 from "../components/H3";
+import H2 from "../components/H2";
+import P from "../components/P";
 
 function Event({ event }) {
   return (
-    <li className="mb-4">
+    <li className="mb-8">
       <div className="flex justify-between">
         <H3>{event.name}</H3>
         <div>
@@ -24,14 +24,15 @@ function Event({ event }) {
       {event.distances ? <P>{event.distances}</P> : null}
       {event.host ? (
         <P>
-          Host: <A href={`/groups/#${snakeCase(event.host)}`}>{event.host}</A>
+          Host:{" "}
+          <Link href={`/groups/#${snakeCase(event.host)}`}>{event.host}</Link>
         </P>
       ) : null}
       <div className="flex">
-        {event.website ? <A href={event.website}>Website</A> : null}
-        {event.instagram ? <A href={event.instagram}>Instagram</A> : null}
-        {event.facebook ? <A href={event.facebook}>Facebook</A> : null}
-        {event.twitter ? <A href={event.twitter}>Twitter</A> : null}
+        {event.website ? <Link href={event.website}>Website</Link> : null}
+        {event.instagram ? <Link href={event.instagram}>Instagram</Link> : null}
+        {event.facebook ? <Link href={event.facebook}>Facebook</Link> : null}
+        {event.twitter ? <Link href={event.twitter}>Twitter</Link> : null}
       </div>
     </li>
   );
@@ -61,10 +62,6 @@ export default function EventsPage({ events }) {
   return (
     <Content>
       <H2>Races & Events</H2>
-      <H3>
-        I have not done a thorough check of upcoming events, this is in no way a
-        complete list!
-      </H3>
       <Events events={events} />
     </Content>
   );
