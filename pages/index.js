@@ -20,11 +20,15 @@ function Meetups({ meetups }) {
       {meetups.map((meetup) => {
         const key = meetupId(meetup);
         return (
-          <li key={key} className="grid grid-cols-6 gap-4 mb-4" id={key}>
+          <li
+            key={key}
+            className="grid grid-cols-3 sm:grid-cols-6 gap-4 mb-4"
+            id={key}
+          >
             <div className="w-24 flex-none col-span-1 leading-8">
               {meetup.time}
             </div>
-            <div className="col-span-5">
+            <div className="col-span-2 sm:col-span-5">
               <A
                 className="mb-2 block"
                 href={`/groups/#${snakeCase(meetup.running_group)}`}
