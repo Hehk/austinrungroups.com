@@ -1,10 +1,10 @@
 import { getEvents } from "../lib/sheets";
 import { snakeCase } from "../lib/utils";
-import Link from "../components/Link";
-import Content from "../components/Content";
-import H3 from "../components/H3";
-import H2 from "../components/H2";
-import P from "../components/P";
+import Link from "../components/link";
+import Content from "../components/content";
+import H3 from "../components/h3";
+import H2 from "../components/h2";
+import P from "../components/p";
 
 function Event({ event }) {
   return (

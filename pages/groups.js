@@ -1,10 +1,10 @@
 import { getRunningGroups, getRunningMeetups } from "../lib/sheets";
 import { snakeCase, meetupId } from "../lib/utils";
 import NextLink from "next/link";
-import Link from "../components/Link";
-import H3 from "../components/H3";
-import H2 from "../components/H2";
-import Content from "../components/Content";
+import Link from "../components/link";
+import H3 from "../components/h3";
+import H2 from "../components/h2";
+import Content from "../components/content";
 
 // This could probably be made one line
 const dayToNum = (day) => {

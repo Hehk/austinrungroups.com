@@ -1,5 +1,5 @@
 import H1 from "./h1";
-import A from "./Link";
+import A from "./link";
 import NextLink from "next/link";
 
 function Link({ href, text, route }) {

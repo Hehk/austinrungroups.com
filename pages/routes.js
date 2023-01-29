@@ -1,8 +1,8 @@
-import H2 from "../components/H2";
-import H3 from "../components/H3";
-import Link from "../components/Link";
-import P from "../components/P";
-import Content from "../components/Content";
+import H2 from "../components/h2";
+import H3 from "../components/h3";
+import Link from "../components/link";
+import P from "../components/p";
+import Content from "../components/content";
 
 export default function Routes() {
   return (

@@ -1,8 +1,8 @@
 import { SPREADSHEET_LINK, GITHUB_REPO } from "../lib/constants";
-import Content from "../components/Content";
-import H2 from "../components/H2";
-import P from "../components/P";
-import Link from "../components/Link";
+import Content from "../components/content";
+import H2 from "../components/h2";
+import P from "../components/p";
+import Link from "../components/link";
 
 export default function Contact() {
   return (
